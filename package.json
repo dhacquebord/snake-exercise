@@ -17,10 +17,12 @@
     },
     "author": "Dennis Hacquebord",
     "dependencies": {
+        "@types/recoil": "0.0.1",
         "classnames": "^2.2.6",
         "next": "^10.0.2",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
+        "recoil": "^0.1.2",
         "sass": "^1.29.0"
     },
     "devDependencies": {

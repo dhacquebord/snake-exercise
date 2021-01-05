@@ -1,11 +1,14 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import { WindowSizeProvider } from 'components'
+import { WindowSizeProvider, GameStateProvider } from 'components'
 import './_app.scss'
 
 const Index = ({ Component, pageProps }: AppProps) => (
     <>
         <Head>
+            <title>Snake by dhacquebord</title>
+            <meta name="title" content="Snake by dhacquebord" />
+            <meta name="description" content="Boilerplate to give you a quickstart on your new Next.js project" />
             <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
             <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
             <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
@@ -20,12 +23,14 @@ const Index = ({ Component, pageProps }: AppProps) => (
             <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
             <link rel="manifest" href="/manifest.json" />
-            <meta name="msapplication-TileColor" content="#ffffff" />
+            <meta name="msapplication-TileColor" content="#000000" />
             <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
-            <meta name="theme-color" content="#ffffff" />
+            <meta name="theme-color" content="#000000" />
         </Head>
         <WindowSizeProvider>
-            <Component {...pageProps} />
+            <GameStateProvider>
+                <Component {...pageProps} />
+            </GameStateProvider>
         </WindowSizeProvider>
     </>
 )

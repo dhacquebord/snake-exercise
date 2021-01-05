@@ -5,19 +5,27 @@ import styles from './anchor.module.scss'
 
 type Props = {
     href?: string
+    onClick?: () => void
     className?: string
 }
 
 const Index: FunctionComponent<Props> = ({
     href,
+    onClick,
     className,
     children
-}) => (
-    <Link href={href}>
-        <a className={classnames(styles.anchor, className)}>
+}) => {
+    const a = (
+        <a onClick={onClick} className={classnames(styles.anchor, className)}>
             {children}
         </a>
-    </Link>
-)
+    )
+
+    return href ? (
+        <Link href={href}>
+            {a}
+        </Link>
+    ) : a
+}
 
 export default Index
