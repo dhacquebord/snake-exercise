@@ -1,45 +1,62 @@
 {
-    "name": "next-boilerplate",
+    "name": "snake-exercise",
     "version": "1.0.0",
     "description": "",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
+        "test": "ava",
+        "test:watch": "ava --watch",
+        "test:solution": "NEXT_PUBLIC_USE_SOLUTION=true npm run test",
         "lint": "eslint . --ext .ts,.js,.tsx",
         "lint-and-fix": "eslint . --ext .ts,.js,.tsx --fix",
-        "stylelint": "stylelint '**/*.css' '**/*.scss'"
+        "stylelint": "stylelint '**/*.css' '**/*.scss'",
+        "demo": "NEXT_PUBLIC_USE_SOLUTION=true npm run build; npm start"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged; npm run test:solution"
         }
+    },
+    "ava": {
+        "extensions": [
+            "ts"
+        ],
+        "require": [
+            "tsconfig-paths/register",
+            "ts-node/register"
+        ]
     },
     "author": "Dennis Hacquebord",
     "dependencies": {
         "@types/recoil": "0.0.1",
         "classnames": "^2.2.6",
-        "next": "^10.0.2",
+        "keycode-js": "^3.1.0",
+        "next": "^10.0.7",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "recoil": "^0.1.2",
-        "sass": "^1.29.0"
+        "sass": "^1.32.8"
     },
     "devDependencies": {
-        "@types/node": "^14.14.8",
-        "@types/react": "^16.9.56",
-        "@typescript-eslint/eslint-plugin": "^4.8.1",
-        "@typescript-eslint/parser": "^4.8.1",
-        "eslint": "^7.13.0",
+        "@types/node": "^14.14.31",
+        "@types/react": "^16.14.4",
+        "@typescript-eslint/eslint-plugin": "^4.15.2",
+        "@typescript-eslint/parser": "^4.15.2",
+        "ava": "^3.15.0",
+        "eslint": "^7.21.0",
         "eslint-plugin-no-secrets": "^0.6.8",
-        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-sonarjs": "^0.5.0",
-        "husky": "^4.3.0",
-        "lint-staged": "^10.5.1",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
         "standard-react": "^4.0.0",
-        "stylelint": "^13.8.0",
+        "stylelint": "^13.11.0",
         "stylelint-config-standard": "^20.0.0",
         "stylelint-no-unsupported-browser-features": "^4.1.4",
-        "typescript": "^4.0.5"
+        "ts-node": "^9.1.1",
+        "tsconfig-paths": "^3.9.0",
+        "typescript": "^4.2.2"
     }
 }

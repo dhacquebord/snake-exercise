@@ -18,4 +18,8 @@ export { default as GithubIcon } from './icons/github'
 // Game
 export { default as Game } from './game' 
 export { default as Snake } from './game/snake' 
+export { default as DirectionMarker } from './game/direction-marker' 
+export { default as Food } from './game/food' 
+export { default as Score } from './game/score' 
 export { default as GameOverNotice } from './game/game-over-notice' 
+export { default as PauseNotice } from './game/pause-notice' 

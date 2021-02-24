@@ -1,15 +1,14 @@
 import { Anchor } from 'components'
 import { useGameState } from 'components/context/game-state'
-import styles from './game-over-notice.module.scss'
+import styles from './pause-notice.module.scss'
 
 const Index = () => {
-    const { handleNewGame, score } = useGameState()
+    const { handleStart } = useGameState()
     return (
         <div className={styles.gameOverNotice}>
             <div>
-                <h1>Game Over!</h1>
-                <div>You scored {score} points!</div>
-                <Anchor onClick={handleNewGame}>Restart</Anchor>
+                <h1>Paused</h1>
+                <Anchor onClick={handleStart}>Continue</Anchor>
             </div>
         </div>
     )

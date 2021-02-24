@@ -11,7 +11,7 @@ const Index = ({ maxWidth }: Props) => {
 
     return (
         <div className={styles.footer} style={footerStyle}>
-            Made with ☕ and ❤️ by dhacquebord
+            By dhacquebord
         </div>
     )
 }
