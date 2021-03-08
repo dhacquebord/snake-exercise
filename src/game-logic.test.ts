@@ -33,7 +33,7 @@ const initialState: GameLogicState = {
     score: 0
 }
 
-test('Moves up when direction is "up"', t => {
+test('Move the snake > Up when direction is "Up"', t => {
     const state = handleGameTick(initialState)
     const correctSnakePosition = [...initialState.snake]
     correctSnakePosition.unshift({
@@ -44,7 +44,7 @@ test('Moves up when direction is "up"', t => {
     t.deepEqual(state.snake, correctSnakePosition)
 })
 
-test('Moves right when direction is "right"', t => {
+test('Move the snake > Right when direction is "Right"', t => {
     const state = handleGameTick({
         ...initialState,
         currentDirection: Direction.Right
@@ -58,7 +58,7 @@ test('Moves right when direction is "right"', t => {
     t.deepEqual(state.snake, correctSnakePosition)
 })
 
-test('Moves down when direction is "down"', t => {
+test('Move the snake > Down when direction is "Down"', t => {
     const state = handleGameTick({
         ...initialState,
         currentDirection: Direction.Down
@@ -72,9 +72,10 @@ test('Moves down when direction is "down"', t => {
     t.deepEqual(state.snake, correctSnakePosition)
 })
 
-test('Moves left when direction is "left"', t => {
+test('Move the snake > Left when direction is "Left"', t => {
     const state = handleGameTick({
         ...initialState,
+        snake: initialState.snake.sort(() => -1),
         currentDirection: Direction.Left
     })
     const correctSnakePosition = [...initialState.snake]
@@ -86,7 +87,7 @@ test('Moves left when direction is "left"', t => {
     t.deepEqual(state.snake, correctSnakePosition)
 })
 
-test('Dies when hitting the upper wall', t => {
+test('Die when the snake is hitting a wall > Upper wall', t => {
     const state = handleGameTick({
         ...initialState,
         snake: [{
@@ -97,7 +98,7 @@ test('Dies when hitting the upper wall', t => {
     t.true(state.dead)
 })
 
-test('Dies when hitting the right wall', t => {
+test('Die when the snake is hitting a wall > Right wall', t => {
     const state = handleGameTick({
         ...initialState,
         currentDirection: Direction.Right,
@@ -109,7 +110,7 @@ test('Dies when hitting the right wall', t => {
     t.true(state.dead)
 })
 
-test('Dies when hitting the lower wall', t => {
+test('Die when the snake is hitting a wall > Lower wall', t => {
     const state = handleGameTick({
         ...initialState,
         currentDirection: Direction.Down,
@@ -121,7 +122,7 @@ test('Dies when hitting the lower wall', t => {
     t.true(state.dead)
 })
 
-test('Dies when hitting the left wall', t => {
+test('Die when the snake is hitting a wall > Left wall', t => {
     const state = handleGameTick({
         ...initialState,
         currentDirection: Direction.Left,
@@ -133,7 +134,7 @@ test('Dies when hitting the left wall', t => {
     t.true(state.dead)
 })
 
-test('Dies when hitting itself', t => {
+test('Die when the snake is hitting itself', t => {
     const state = handleGameTick({
         ...initialState,
         snake: [{
@@ -153,7 +154,7 @@ test('Dies when hitting itself', t => {
     t.true(state.dead)
 })
 
-test('Grows when eating food', t => {
+test('Grow the snake when it\'s eating food', t => {
     const state = handleGameTick({
         ...initialState,
         food: {
@@ -169,7 +170,7 @@ test('Grows when eating food', t => {
     t.deepEqual(state.snake, correctSnakePosition)
 })
 
-test('Raises score when eating food', t => {
+test('Raise score when the snake is eating food', t => {
     const state = handleGameTick({
         ...initialState,
         food: {
@@ -180,21 +181,7 @@ test('Raises score when eating food', t => {
     t.is(state.score, initialState.score + 1)
 })
 
-test('Generates new food when it has been eaten', t => {
-    const state = handleGameTick({
-        ...initialState,
-        food: {
-            x: initialState.snake[0].x,
-            y: initialState.snake[0].y - 1
-        }
-    })
-    t.true(typeof state.food.x === 'number')
-    t.true(typeof state.food.y === 'number')
-    t.not(state.food, initialState.food)
-})
-
-
-test('Newly generated food is not under the snake', t => {
+test('Generate new food when it has been eaten > Food is not underneath the snake', t => {
     for (let i = 0; i <= 10000; i++) {
         const state = handleGameTick({
             ...initialState,
@@ -207,7 +194,7 @@ test('Newly generated food is not under the snake', t => {
     }
 })
 
-test('Newly generated food is within the game board', t => {
+test('Generate new food when it has been eaten > Food is within the game board', t => {
     for (let i = 0; i <= 10000; i++) {
         const state = handleGameTick({
             ...initialState,
