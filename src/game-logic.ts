@@ -19,7 +19,7 @@ import { GameLogicState, Direction } from 'models' // eslint-disable-line no-unu
  * 
  * A Coordinate is an object containing an x and y property
  */
-export const handleGameTick = (state: GameLogicState) => {
+export const handleGameTick = (state: GameLogicState): GameLogicState => {
     /**
      * TODO:
      * - Move snake
@@ -30,5 +30,14 @@ export const handleGameTick = (state: GameLogicState) => {
      * - Generate new food when it has been eaten
      * - Check if snake hits itself and die if this is the case
      */
+
+    // Example
+    state.snake.unshift({
+        x: state.snake[0].x + 1,
+        y: state.snake[0].y
+    })
+    state.snake.pop()
+
+
     return state
 }
