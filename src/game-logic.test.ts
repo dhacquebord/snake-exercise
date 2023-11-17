@@ -138,18 +138,21 @@ test('Die when the snake is hitting itself', t => {
     const state = handleGameTick({
         ...initialState,
         snake: [{
-            x: 0,
-            y: 0
+            x: 2,
+            y: 2
         }, {
-            x: 0,
-            y: 1
+            x: 1,
+            y: 2
         }, {
             x: 1,
             y: 1
         }, {
-            x: 1,
-            y: 0
-        }, ]
+            x: 2,
+            y: 1
+        }, {
+            x: 3,
+            y: 1
+        }]
     })
     t.true(state.dead)
 })
