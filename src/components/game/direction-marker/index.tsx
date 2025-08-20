@@ -1,5 +1,5 @@
 import { useGameState } from 'components/context/game-state'
-import { Direction } from 'models'
+import { Direction } from 'snake-challenge/models'
 import styles from './direction-marker.module.scss'
 
 const Index = () => {

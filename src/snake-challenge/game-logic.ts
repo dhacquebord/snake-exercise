@@ -1,4 +1,4 @@
-import { GameLogicState, Direction } from 'models' // eslint-disable-line no-unused-vars
+import { GameLogicState, Direction } from './models' // eslint-disable-line no-unused-vars
 
 /**
  * This function updates the gamestate for every game tick
@@ -38,6 +38,6 @@ export const handleGameTick = (state: GameLogicState): GameLogicState => {
     })
     state.snake.pop()
 
-
+    
     return state
 }

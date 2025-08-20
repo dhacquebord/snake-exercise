@@ -1,7 +1,7 @@
 import { useContext, createContext, ReactNode, useState, useEffect } from 'react'
 import { CODE_LEFT, CODE_UP, CODE_RIGHT, CODE_DOWN, CODE_ESCAPE } from 'keycode-js'
-import { GameState, Direction } from 'models'
-const { handleGameTick } = require(process.env.NEXT_PUBLIC_USE_SOLUTION === 'true' ? 'solution' : 'game-logic')
+import { GameState, Direction } from 'snake-challenge/models'
+const { handleGameTick } = require(process.env.NEXT_PUBLIC_USE_SOLUTION === 'true' ? 'solution' : 'snake-challenge/game-logic')
 
 const clone = obj => JSON.parse(JSON.stringify(obj))
 
@@ -99,6 +99,7 @@ export const GameStateProvider = ({ children }: Props) => {
             ...state,
             paused: false
         }))
+        clearInterval(tickInterval)
         tickInterval = setInterval(handleTick, 200 * Math.pow(0.9, gameState.score))
     }
     

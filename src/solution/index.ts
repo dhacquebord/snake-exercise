@@ -1,4 +1,4 @@
-import { GameLogicState, Direction, Coordinate } from 'models'
+import { GameLogicState, Direction, Coordinate } from 'snake-challenge/models'
 
 const coordinatesEqual = (a, b) => a.y === b.y && a.x === b.x
 

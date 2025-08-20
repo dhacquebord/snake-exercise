@@ -1,5 +1,5 @@
 import test from 'ava'
-import { GameLogicState, Direction } from 'models'
+import { GameLogicState, Direction } from './models'
 const { handleGameTick: _handleGameTick } = require(process.env.NEXT_PUBLIC_USE_SOLUTION === 'true' ? 'solution' : 'game-logic')
 
 const clone = obj => JSON.parse(JSON.stringify(obj))
